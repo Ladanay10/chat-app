@@ -1,0 +1,30 @@
+.message {
+	background: #1B1B1B;
+	border-radius: 0px 10px 10px 10px;
+	width: 300px;
+	padding: 5px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 5px;
+	border-radius: 10px 0px 10px 10px;
+	width: 300px;
+	font-size: 20px;
+
+	img {
+		width: 60px;
+		border-radius: 50%;
+	}
+
+	h2 {
+		font-size: 18px;
+		font-weight: 600;
+		color: rgb(199, 195, 195);
+	}
+}
+
+.message_user {
+	background: #1A66FF;
+	margin-left: auto;
+}

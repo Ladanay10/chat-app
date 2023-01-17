@@ -1,0 +1,49 @@
+.navBar {
+	display: flex;
+	background: #1A66FF;
+	padding: 5px 10px;
+	border-radius: 10px 10px 0 0;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	&>img:hover {
+
+		transform: scale(1.2);
+		transition: 0.4s all;
+	}
+
+	.user_info {
+		display: flex;
+		align-items: center;
+
+		img {
+			border-radius: 50%;
+			margin-right: 10px;
+		}
+
+	}
+
+	div {
+		span {
+			font-weight: 600;
+			font-size: 24px;
+			line-height: 36px;
+		}
+
+		p {
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 21px;
+			color: rgba(255, 255, 255, 0.85);
+		}
+		.online_icon {
+			width: 20px;
+			position: absolute;
+			left: 80px;
+			height: 20px;
+			background: rgb(0, 255, 17);
+			border: 3px solid #fff;
+			border-radius: 50%;
+		}
+	}
+}
