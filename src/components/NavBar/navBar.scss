@@ -1,3 +1,5 @@
+@import '../../App.scss';
+
 .navBar {
 	display: flex;
 	background: #1A66FF;
@@ -6,10 +8,36 @@
 	align-items: center;
 	justify-content: space-between;
 	position: relative;
-	&>img:hover {
 
+
+	@include _768 {
+		padding: 5px;
+
+		&>img {
+			width: 40px;
+		}
+	}
+
+	&>img:hover {
 		transform: scale(1.2);
 		transition: 0.4s all;
+
+	}
+
+	.created_by {
+		position: absolute;
+		left: 115px;
+		bottom: 3px;
+
+		@include _768 {
+			left: 150px;
+			bottom: 9px;
+		}
+
+		span {
+			font-weight: 700;
+			color: #000;
+		}
 	}
 
 	.user_info {
@@ -19,6 +47,10 @@
 		img {
 			border-radius: 50%;
 			margin-right: 10px;
+
+			@include _768 {
+				width: 60px;
+			}
 		}
 
 	}
@@ -36,6 +68,7 @@
 			line-height: 21px;
 			color: rgba(255, 255, 255, 0.85);
 		}
+
 		.online_icon {
 			width: 20px;
 			position: absolute;
@@ -44,6 +77,15 @@
 			background: rgb(0, 255, 17);
 			border: 3px solid #fff;
 			border-radius: 50%;
+
+			@include _768 {
+				width: 10px;
+				height: 10px;
+				left: 50px;
+				bottom: 10px;
+				border: 2px solid #fff;
+
+			}
 		}
 	}
 }

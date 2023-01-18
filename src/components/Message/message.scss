@@ -1,3 +1,4 @@
+@import '../../App.scss'; 
 .message {
 	background: #1B1B1B;
 	border-radius: 0px 10px 10px 10px;
@@ -12,9 +13,18 @@
 	width: 300px;
 	font-size: 20px;
 
+	@include _768 {
+		width:70%;
+		gap: 10px;
+	}
+
 	img {
 		width: 60px;
 		border-radius: 50%;
+		@include _768 {
+			
+			width: 50px;
+		}
 	}
 
 	h2 {
@@ -27,4 +37,5 @@
 .message_user {
 	background: #1A66FF;
 	margin-left: auto;
+	
 }

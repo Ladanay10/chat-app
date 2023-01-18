@@ -1,0 +1,51 @@
+@import '../../App.scss';
+.form {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	img {
+		width: 30px;
+	}
+	input {
+		font-size: 20px;
+		background: #212121;
+		border-radius: 10px;
+		border: none;
+		width: 100%;
+		outline: none;
+		padding: 15px 10px;
+		color: #fff;
+		border: 1px solid transparent;
+
+		&:focus {
+			transition: 0.4s all;
+			border: 1px solid #1A66FF;
+		}
+		@include _768 {
+			padding: 5px;
+			font-size: 18px;
+		}
+	}
+
+	button {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		padding: 15px 8px;
+		border-radius: 10px;
+		background: #1A66FF;
+		color: #fff;
+		font-weight: 700;
+		font-size: 18px;
+		border: 1px solid #1A66FF;
+		@include _768 {
+			padding: 5px;
+			font-size: 16px;
+		}
+
+		&:hover {
+			background: transparent;
+			transition: 0.4s all;
+		}
+	}
+}

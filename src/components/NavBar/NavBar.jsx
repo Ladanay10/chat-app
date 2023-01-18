@@ -9,6 +9,7 @@ export const NavBar = () => {
 	const [user] = useAuthState(auth);
 	return (
 		<nav className='navBar'>
+			<span className='created_by'>Created by <span>@AL</span></span>
 			<div className='user_info'>
 				<img src={user.photoURL} alt="" />
 				<div>

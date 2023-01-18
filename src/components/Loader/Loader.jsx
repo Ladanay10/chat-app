@@ -1,19 +1,32 @@
 import React from 'react'
-import { Comment } from 'react-loader-spinner'
+import { Comment, Watch } from 'react-loader-spinner'
 
-export const Loader = () => {
+export const Loader = ({ watch }) => {
 	return (
 		<div style={{ textAlign: 'center' }}>
-			<Comment
-				visible={true}
-				height="80"
-				width="80"
-				ariaLabel="comment-loading"
-				wrapperStyle={{}}
-				wrapperClass="comment-wrapper"
-				color="#fff"
-				backgroundColor="#1A66FF"
-			/>
+			{
+				watch ?
+					<Watch
+						height="80"
+						width="80"
+						radius="48"
+						color="#1A66FF"
+						ariaLabel="watch-loading"
+						wrapperStyle={{}}
+						wrapperClassName=""
+						visible={true}
+					/> :
+					<Comment
+						visible={true}
+						height="80"
+						width="80"
+						ariaLabel="comment-loading"
+						wrapperStyle={{}}
+						wrapperClass="comment-wrapper"
+						color="#fff"
+						backgroundColor="#1A66FF"
+					/>
+			}
 		</div>
 	)
 }

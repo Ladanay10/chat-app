@@ -1,34 +1,19 @@
-import { addDoc, collection, orderBy, query, serverTimestamp } from 'firebase/firestore';
-import React, { useContext, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { collection, orderBy, query, } from 'firebase/firestore';
+import React, { useContext, useRef, useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { Context } from '../..';
 import { Loader } from '../../components/Loader/Loader';
 import Message from '../../components/Message/Message';
 import { NavBar } from '../../components/NavBar/NavBar';
+import { SendForm } from '../../components/SendForm/SendForm';
 import './chat.scss'
 const Chat = () => {
-	const { auth, firestore } = useContext(Context);
-	const [user] = useAuthState(auth);
-	const [inputValue, setInputValue] = useState('');
+	const { firestore } = useContext(Context);
+	const lastMessageRef = useRef(null);
 	const [messages, loading] = useCollectionData(
 		query(collection(firestore, 'messages'), orderBy('createdAt'))
 	)
-	const handleChange = (e) => {
-		setInputValue(e.target.value);
-	}
-	const sendMessage = async () => {
-		const data = {
-			uid: user.uid,
-			id: Math.random(),
-			displayName: user.displayName,
-			photoURL: user.photoURL,
-			text: inputValue,
-			createdAt: serverTimestamp()
-		}
-		await addDoc(collection(firestore, 'messages'), data);
-		setInputValue('');
-	}
+
 	return (
 		<div className="container">
 			<div className='chat_content'>
@@ -38,17 +23,19 @@ const Chat = () => {
 						loading && <Loader />
 					}
 					<div className="messages">
-						{
-							messages && messages.map((value => (
-								<Message value={value} key={value.id}>{value.text}</Message>
-							)))
-						}
-					</div>
-					<div className='input'>
-						<input value={inputValue} onChange={handleChange} type="text" placeholder='Enter some message' />
-						<button onClick={sendMessage}>Send</button>
-					</div>
 
+						{
+							messages &&
+								messages.length > 0 ? messages.map((value => (
+									<Message value={value} key={value.id}>{value.text}</Message>
+								))) : <div className='skeleton'>
+								Чат пустий, очікуйте повідомлень...
+								<Loader watch />
+							</div>
+						}
+						<div ref={lastMessageRef}></div>
+					</div>
+					<SendForm lastMessageRef={lastMessageRef} />
 				</div>
 			</div>
 		</div>
