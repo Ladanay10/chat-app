@@ -1,11 +1,14 @@
 @import '../../App.scss';
+
 .form {
 	display: flex;
 	align-items: center;
 	gap: 10px;
+
 	img {
 		width: 30px;
 	}
+
 	input {
 		font-size: 20px;
 		background: #212121;
@@ -21,6 +24,7 @@
 			transition: 0.4s all;
 			border: 1px solid #1A66FF;
 		}
+
 		@include _768 {
 			padding: 5px;
 			font-size: 18px;
@@ -38,6 +42,7 @@
 		font-weight: 700;
 		font-size: 18px;
 		border: 1px solid #1A66FF;
+
 		@include _768 {
 			padding: 5px;
 			font-size: 16px;
@@ -48,4 +53,37 @@
 			transition: 0.4s all;
 		}
 	}
+
+	.emoji {
+		position: relative;
+
+		&>svg {
+			z-index: 1000;
+			cursor: pointer;
+		}
+
+		.non_active {
+			position: absolute;
+			display: none;
+			bottom: 0;
+			transform: translateX(600px);
+			opacity: 0;
+			transition: all 0.3s;
+			right: 50px;
+
+		}
+
+		.active {
+			transform: translateX(0px);
+			opacity: 1;
+		}
+
+		@include _768 {
+			display: none;
+		}
+	}
+}
+
+::-webkit-scrollbar {
+	display: none;
 }

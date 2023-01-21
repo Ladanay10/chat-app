@@ -1,5 +1,5 @@
-import { collection, orderBy, query, } from 'firebase/firestore';
-import React, { useContext, useRef, useState } from 'react';
+import { collection, orderBy, query } from 'firebase/firestore';
+import React, { useContext, useRef } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { Context } from '../..';
 import { Loader } from '../../components/Loader/Loader';
@@ -13,7 +13,6 @@ const Chat = () => {
 	const [messages, loading] = useCollectionData(
 		query(collection(firestore, 'messages'), orderBy('createdAt'))
 	)
-
 	return (
 		<div className="container">
 			<div className='chat_content'>
@@ -39,8 +38,7 @@ const Chat = () => {
 				</div>
 			</div>
 		</div>
-
 	)
 }
 
-export default Chat
+export default Chat;

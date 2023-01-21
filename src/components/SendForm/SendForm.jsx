@@ -3,26 +3,15 @@ import React, { useContext, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Context } from '../..';
 import { AiOutlineSend } from 'react-icons/ai';
-import { FiUploadCloud } from 'react-icons/fi';
+import { GrEmoji } from 'react-icons/gr';
 import './sendForm.scss';
+import EmojiPicker from 'emoji-picker-react';
 
 export const SendForm = ({ lastMessageRef }) => {
 	const { auth, firestore } = useContext(Context);
 	const [user] = useAuthState(auth);
 	const [inputValue, setInputValue] = useState('');
-
-	// const [fileImg, setFileImg] = useState();
-	// const [fileImgURL, setFileImgURL] = useState();
-	// const fileReader = new FileReader();
-	// fileReader.onloadend = () => {
-	// 	setFileImgURL(fileReader.result);
-	// }
-	// const hadnleClcik = (e) => {
-	// 	e.preventDefault()
-	// 	const file = e.target.files[0]
-	// 	setFileImg(file);
-	// 	fileReader.readAsDataURL(file);
-	// }
+	const [emojiIsActive, setEmojiIsActive] = useState(false);
 	const handleChange = (e) => {
 		setInputValue(e.target.value);
 	}
@@ -40,17 +29,36 @@ export const SendForm = ({ lastMessageRef }) => {
 			}
 			await addDoc(collection(firestore, 'messages'), data);
 			setInputValue('');
-			setTimeout(lastMessageRef.current.scrollIntoView({ behavior: "smooth" }), 1000);
+			setTimeout(lastMessageRef.current.scrollIntoView({ behavior: "smooth" }), 700);
 		}
 	}
+	const handleClick = () => {
+		setEmojiIsActive(!emojiIsActive);
+	}
+	const handleClickOnEmoji = (e) => {
+		setInputValue(prev => prev + e.emoji);
+		setEmojiIsActive(false);
 
+	}
 	return (
 		<form className='form' onSubmit={sendMessage}>
 			<input value={inputValue} onChange={handleChange} placeholder='Enter some message' />
-			{/* <input type="file" id='file' onChange={hadnleClcik} style={{ display: 'none' }} />
-			<label htmlFor="file" >
-				<FiUploadCloud size={25} />
-			</label> */}
+
+			<div className='emoji'>
+				<GrEmoji size={30} onClick={handleClick} />
+				<div className={emojiIsActive ? 'active non_active' : 'non_active'}>
+					<EmojiPicker
+						width={300}
+						height={400}
+						onEmojiClick={handleClickOnEmoji}
+						theme="dark"
+						searchDisabled={true}
+						skinTonesDisabled={true}
+						suggestedEmojisMode={'recent'}
+					/>
+				</div>
+
+			</div>
 			<button>Send <AiOutlineSend size={20} /></button>
 		</form>
 	)

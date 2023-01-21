@@ -4,10 +4,9 @@ import { Context } from '../..';
 import './message.scss';
 
 const Message = ({ children, value }) => {
-	const { auth } = useContext(Context)
+	const { auth } = useContext(Context);
 	const [user] = useAuthState(auth);
 	return (
-
 		<div className={value.uid === user.uid ? ' message_user message' : 'message'}>
 			<img src={value.photoURL} alt="photoURL" />
 			<div>
@@ -18,4 +17,4 @@ const Message = ({ children, value }) => {
 	)
 }
 
-export default Message
+export default Message;
