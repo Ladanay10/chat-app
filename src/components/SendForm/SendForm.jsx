@@ -15,7 +15,6 @@ export const SendForm = ({ lastMessageRef }) => {
 	const handleChange = (e) => {
 		setInputValue(e.target.value);
 	}
-
 	const sendMessage = async (e) => {
 		e.preventDefault();
 		if (inputValue.trim()) {
@@ -42,7 +41,7 @@ export const SendForm = ({ lastMessageRef }) => {
 	}
 	return (
 		<form className='form' onSubmit={sendMessage}>
-			<input value={inputValue} onChange={handleChange} placeholder='Enter some message' />
+			<input value={inputValue} onChange={handleChange} placeholder='Введіть ваше повідомлення...' />
 
 			<div className='emoji'>
 				<GrEmoji size={30} onClick={handleClick} />
@@ -59,7 +58,7 @@ export const SendForm = ({ lastMessageRef }) => {
 				</div>
 
 			</div>
-			<button>Send <AiOutlineSend size={20} /></button>
+			<button>Відправити <AiOutlineSend size={20} /></button>
 		</form>
 	)
 }	

@@ -65,15 +65,14 @@
 		.non_active {
 			position: absolute;
 			bottom: 0;
-			transform: translateX(600px);
+			transform: translateY(-300px);
 			opacity: 0;
 			transition: all 0.3s;
 			right: 50px;
 
 		}
-
 		.active {
-			transform: translateX(0px);
+			transform: translateY(0px);
 			opacity: 1;
 		}
 
