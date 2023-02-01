@@ -1,29 +1,54 @@
-@import '../../App.scss'; 
+@import '../../App.scss';
+
 .message {
 	background: #1B1B1B;
-	border-radius: 0px 10px 10px 10px;
-	width: 300px;
 	padding: 5px;
 	font-size: 20px;
 	display: flex;
 	align-items: center;
 	gap: 20px;
-	padding: 5px;
-	border-radius: 10px 0px 10px 10px;
-	width: 300px;
-	font-size: 20px;
+	border-radius: 0px 10px 10px 10px;
+	position: relative;
+	width: 350px;
+
+	.message__text {
+		max-width: 200px;
+
+		@include _768 {
+			h2 {
+				font-size: 14px;
+			}
+
+			max-width: 120px;
+			font-size: 14px;
+		}
+
+		.date {
+			position: absolute;
+			right: 3px;
+			font-size: 16px;
+			top: 3px;
+
+			@include _768 {
+
+				font-size: 11px;
+			}
+		}
+
+	}
 
 	@include _768 {
-		width:70%;
+		width: 70%;
 		gap: 10px;
 	}
 
 	img {
 		width: 60px;
 		border-radius: 50%;
+
 		@include _768 {
-			
-			width: 50px;
+
+			width: 30px;
 		}
 	}
 
@@ -31,11 +56,27 @@
 		font-size: 18px;
 		font-weight: 600;
 		color: rgb(199, 195, 195);
+
 	}
 }
 
 .message_user {
 	background: #1A66FF;
 	margin-left: auto;
-	
+	border-radius: 10px 0px 10px 10px;
+}
+
+.message__img {
+	margin-left: auto;
+}
+
+.images {
+	height: 100%;
+	object-fit: contain;
+	width: 350px;
+
+	@include _768 {
+		width: 250px;
+		gap: 10px;
+	}
 }

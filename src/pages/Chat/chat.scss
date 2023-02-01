@@ -24,7 +24,7 @@
 		.messages {
 			display: flex;
 			flex-direction: column;
-			gap: 15px;
+			gap: 5px;
 			padding-bottom: 10px;
 
 			.message_img {
@@ -46,4 +46,5 @@
 	gap: 20px;
 	font-size: 20px;
 	font-weight: 700;
+	text-align: center;
 }

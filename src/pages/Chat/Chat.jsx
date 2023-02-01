@@ -26,7 +26,7 @@ const Chat = () => {
 						{
 							messages &&
 								messages.length > 0 ? messages.map((value => (
-									<Message value={value} key={value.id}>{value.text}</Message>
+									<Message value={value} key={value.id} />
 								))) : <div className='skeleton'>
 								Чат пустий, очікуйте повідомлень...
 								<Loader watch />
