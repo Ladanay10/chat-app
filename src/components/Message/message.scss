@@ -68,6 +68,12 @@
 
 .message__img {
 	margin-left: auto;
+
+	@include _768 {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+	}
 }
 
 .images {
@@ -77,5 +83,8 @@
 
 	@include _768 {
 		width: 70%;
+		margin-left: auto;
+		object-fit: cover;
+
 	}
 }
